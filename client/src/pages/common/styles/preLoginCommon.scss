@@ -1,0 +1,48 @@
+$color-black: #333;
+$color-gray: #3b3d40;
+$color-white: #fff;
+$color-offWhite: #FAFAFA;
+$color-darkGreen: #34B388;
+$color-green: #00b48c;
+$color-lightGreen: #b9ede2;
+$color-yellow: #fdcf51;
+$color-orange: #f68a16;
+$color-blue: #0071bc;
+$color-red: #db3806;
+$footer-border-color: #809995;
+$border-color: #ccc;
+$link-color: #29abe2;
+$sp: 670px;
+$headerBreakPoint: 1124px;
+
+@mixin sp {
+  @media screen and (max-width: ($sp)) {
+    @content;
+  }
+}
+@mixin headerMobile {
+  @media screen and (max-width: ($headerBreakPoint)) {
+    @content;
+  }
+}
+
+@function fz($size) {
+  @return ($size / 16) + rem;
+}
+
+@function vw($max, $n) {
+  @return (($n / $max) * 100) + vw;
+}
+@function raito($parent, $n) {
+  @return (($n / $parent) * 100) * 1%;
+}
+
+@function em($size, $n) {
+  @return ($n / $size) + em;
+}
+
+// タテヨコ比
+@function xyRaito($x, $y) {
+  @return (($y / $x) * 100) * 1%;
+}
+

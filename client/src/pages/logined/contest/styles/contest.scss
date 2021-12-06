@@ -1,0 +1,251 @@
+.main {
+  min-height: calc(100% - 100px);
+  background-color: #f3f3f3;
+  padding: 53px 20px;
+  box-sizing: border-box;
+  color: #333;
+}
+
+.inner {
+  max-width: 1096px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  .titleBox {
+    border-bottom: 1px solid #455250;
+    margin-bottom: 20px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+
+    h1 {
+      font-size: 24px;
+    }
+
+    small {
+      margin-left: 10px;
+    }
+  }
+
+  .rowWrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 590px;
+
+    .box {
+      margin: 30px 0;
+      width: 100%;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #fff;
+      border: 1px solid #b9b9b9;
+      border-radius: 5px;
+
+      .postName {
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        span {
+          padding: 10px;
+          font: 15px;
+        }
+      }
+
+      .imageWrap {
+        width: 100%;
+        max-height: 750px;
+        overflow: hidden;
+        
+        img {
+          width: 100%;
+        }
+      }
+
+      .description {
+        width: 100%;
+
+        pre {
+          padding: 10px;
+          font-size: 14px;
+          line-height: 18px;
+        }
+      }
+
+      .commentArea {
+        margin-top: 20px;
+        width: 100%;
+
+        .commentOpen {
+          padding: 10px;
+          color: #8e8e8e;
+          font-size: 14px;
+          cursor: pointer;
+        }
+
+        .commentStr {
+          margin: 10px;
+
+          p, pre {
+            padding: 5px;
+            font-size: 14px;
+            line-height: 18px;
+            color: #262626;
+          }
+
+          pre {
+            margin-left: 5px;
+          }
+
+          &:not(:first-child) {
+            border-top: 1px solid #b9b9b9;
+          }
+        }
+      }
+
+      .addCommentWrap {
+        width: 100%;
+        border-top: 1px solid #b9b9b9;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        align-items: center;
+
+        .textareaWrap {
+          max-width: calc(100% - 80px);
+          min-width: calc(100% - 80px);
+        }
+
+        .dummyTextarea {
+          padding: 10px 0 10px 10px;
+          min-width: 100%;
+          max-width: 100%;
+          min-height: 40px;
+          font-size: 15px;
+          line-height: 15px;
+          box-sizing: border-box;
+          white-space: pre-wrap;
+          word-break: break-all;
+        }
+
+        .addComment {
+          box-sizing: border-box;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: calc(100% - 80px);
+          height: 100%;
+          resize: none;
+          padding: 10px 0 10px 10px;
+          border: none;
+          font-size: 15px;
+          line-height: 15px;
+        }
+
+        .postCommentButton {
+          color: #0095f6;
+          margin-right: 10px;
+          font-size: 14px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.buttonArea {
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+}
+
+.imageAreaWrap {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    opacity: .7;
+  }
+
+  .imageArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+      position: absolute;
+      bottom: 15px;
+      left: calc(50% - 65px);
+    }
+  }
+}
+.descriptionArea {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid #b9b9b9;
+  border-radius: 3px;
+  margin-top: 2px;
+
+  pre {
+    padding: 10px;
+    max-width: 100%;
+    min-width: 100%;
+    height: 100%;
+    font-size: 15px;
+    line-height: 15px;
+    box-sizing: border-box;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  textarea {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    resize: none;
+    padding: 10px;
+    border: none;
+    font-size: 15px;
+    line-height: 15px;
+  }
+}
+
+.postButtonArea {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.errorArea {
+  color: #842029;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+
+  p:not(:first-child) {
+    margin-top: 6px;
+  }
+}

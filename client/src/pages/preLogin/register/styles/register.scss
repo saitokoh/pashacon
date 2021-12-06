@@ -1,0 +1,249 @@
+@import 'pages/common/styles/preLoginCommon.scss';
+
+.main {
+  background-color: #f2f2f2;
+  display: block;
+  width: 100%;
+  min-height: calc(100% - 100px);
+  padding-bottom: 100px;
+  font-weight: 700;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.childContainer {
+  max-width: 1000px;
+  width: 93.75%;
+  margin: 0 auto;
+  padding: 50px 0px;
+}
+
+.childTitle {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.form {
+  $parent: &;
+  background-color: #fff;
+  padding: 50px 0;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  max-width: 1000px;
+
+  .element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .inner {
+    margin: 0 auto;
+  }
+
+  .parts {
+    margin: 0 auto;
+    max-width: 300px;
+    width: 90%;
+    padding-bottom: em(15, 20);
+    border-bottom: 1px solid #b9b9b9;
+    @include sp {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    small {
+      font-size: 12px;
+    }
+  }
+
+  .parts + .parts {
+    margin-top: em(15, 20);
+  }
+
+  .label {
+    font-size: 16px;
+  }
+
+  .input {
+    margin-left: 0;
+    position: relative;
+
+    input,
+    textarea,
+    select {
+      border: 1px solid #b9b9b9;
+      border-radius: 3px;
+      width: calc(100%);
+      font-size: 14px;
+      padding: 5px;
+      margin-top: 5px;
+      background-color: $color-white;
+      box-sizing: border-box;
+
+      &:focus {
+        outline: 1px auto  #1c9c7f;
+      }
+    }
+
+    textarea {
+      resize: none;
+      min-height: 120px;
+    }
+
+    .half-item {
+      display: flex;
+      justify-content: space-between;
+
+      input {
+        width: 48%;
+      }
+    }
+  }
+
+  .must {
+    display: block;
+    position: relative;
+
+    &::after {
+      content: '※';
+      color: $color-red;
+      position: absolute;
+      right: 1em;
+      @include sp {
+        font-size: fz(12);
+        right: -1em;
+      }
+    }
+  }
+
+  ::placeholder {
+    color: #999;
+  }
+
+  // エラーチェック
+  span {
+    &.isError {
+      font-size: fz(14);
+      color: $color-red;
+      display: inline-block;
+      margin-top: em(15, 10);
+    }
+  }
+
+  input,
+  select,
+  textarea {
+    &.isError {
+      border: 1px solid $color-red;
+    }
+  }
+
+  .buttonArea {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+
+    .arrow {
+      position: relative;
+      display: inline-block;
+      margin-left: 1em;
+
+      &::before {
+        content: '';
+        position: absolute;
+        display: inline-block;
+        border-color: #fff;
+        width: calc(1.15em / 2);
+        height: calc(1.15em / 2);
+        border-style: solid;
+        border-width: 2px 2px 0 0;
+        transform: translateY(-50%) rotate(45deg);
+        top: 50%;
+        left: -1.3em;
+      }
+    }
+  }
+}
+
+.passwordEye {
+  position: absolute;
+  right: 14px;
+  top: 12px;
+  cursor: pointer;
+}
+
+.passwordEyeSlash {
+  position: absolute;
+  right: 14px;
+  top: 7.5px;
+  cursor: pointer;
+}
+
+.remember {
+  margin: 15px 0 20px 15px;
+  color: #333;
+  font-weight: 400;
+
+  label {
+    padding: 5px 20px 5px 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #666666;
+
+    &:hover::before {
+      border: 1px solid #00B48C;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      min-width: 14px;
+      min-height: 14px;
+      margin-right: 10px;
+      border: 1px solid #999;
+      border-radius: 2px;
+      background-color: #fff;
+    }
+  }
+
+  input:checked + label {
+    &::before {
+      font-family: "Font Awesome 5 Free";
+      content: '\f00c';
+      font-size: 10px;
+      font-weight: bold;
+      line-height: 14px;
+      text-align: center;
+      color: #fff;
+      border: 1px solid #00B48C;
+      background-color: #00B48C;
+    }
+  }
+  
+  input {
+    display: none;
+  }
+}
+
+.formError {
+  color: $color-red;
+  border: 2px solid $color-red;
+  box-sizing: border-box;
+  padding: em(15, 13);
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: em(15, 30);
+  @include sp {
+    margin-bottom: 1.25em;
+  }
+}

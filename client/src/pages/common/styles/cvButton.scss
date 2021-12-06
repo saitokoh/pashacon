@@ -1,0 +1,38 @@
+.cvButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F68A16;
+  border: transparent;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ffb25f;
+  }
+
+  &.emphasize {
+    box-shadow: 0 3px #a25a0e;
+    transition: all .1s;
+
+    &:hover {
+      transform: translateY(3px);
+      box-shadow: 0 0;
+    }
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: auto;
+
+    &.emphasize {
+      box-shadow: 0 0;
+      transition: none;
+
+      &:hover {
+        transform: none;
+        box-shadow: 0 0;
+      }
+    }
+  }
+}

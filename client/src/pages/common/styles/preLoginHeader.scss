@@ -1,0 +1,48 @@
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  font-size: 15px;
+  border-bottom: 1px solid #b9b9b9;
+
+  .headerInner {
+    background-color:  #fff;
+    color: #3c3c3c;
+    padding-left: 15px;
+    height: 64px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      cursor: pointer;
+
+      &:hover {
+        opacity: .8;
+      }
+
+      .logoTop {
+        display: flex;
+        align-items: center;
+      }
+
+      .logoBottom {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .copy {
+    font-size: 22px;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+}
+
+.headerBack {
+  height: 64px;
+}

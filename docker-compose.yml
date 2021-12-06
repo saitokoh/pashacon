@@ -1,0 +1,99 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8mb4
+    ports: 
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: pashacon_development
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  rails:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #command: /bin/sh -c "rm -f tmp/pids/unicorn.pid && sh init.sh"
+    command: bash
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+    ports:
+      - '3000:3000'
+    environment:
+      LANG: C.UTF-8
+      RAILS_ENV: development
+      HOST: "localhost"
+      PORT: 3000
+      DB_MYSQL_DATABASE: "pashacon_development"
+      DB_MYSQL_SOCKET: "/var/run/mysqld/mysqld.sock"
+      DB_MYSQL_USERNAME: "root"
+      DB_MYSQL_HOST: "db"
+      MAIL_SMTP_ADDRESS: "mail"
+      MAIL_SMTP_PORT: 1025
+      MAIL_SMTP_DOMAIN: ""
+      MAIL_SMTP_USER_NAME: ""
+      MAIL_SMTP_PASSWORD: ""
+      FILE_BASE_PATH: "storage/"
+    volumes:
+      - ./:/var/www/pashacon
+      - tmp-data:/var/www/pashacon/tmp/sockets
+      - log-data:/var/www/pashacon/log
+      - public-data:/var/www/pashacon/public
+      - node-modules:/var/www/pashacon/client/node_modules
+      - bundle:/usr/local/bundle
+      - ./dbbackup:/tmp/init
+
+  webpack:
+    build:
+      context: .
+      dockerfile: Dockerfile_webpack
+    ports:
+      - 80:80
+      - 81:81
+    command: npm run docker:start
+    volumes:
+      - ./client:/var/www/pashacon/client
+      - public-data:/var/www/pashacon/public
+      - node-modules:/var/www/pashacon/client/node_modules
+      
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile_nginx
+    ports:
+      - 8080:8080
+    restart: always
+    command: /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
+    volumes:
+      - tmp-data:/var/www/pashacon/tmp/sockets
+      - log-data:/var/www/pashacon/log
+      - public-data:/var/www/pashacon/public
+      - ./nginx/pashacon.conf:/etc/nginx/conf.d/pashacon.conf
+      - ./public/contest:/var/www/pashacon/public/contest
+    depends_on:
+      - rails
+      - webpack
+
+  mail:
+    image: mailhog/mailhog:latest
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    environment:
+        MH_STORAGE: maildir
+        MH_MAILDIR_PATH: /tmp
+    volumes:
+        - mail-data:/tmp
+volumes:
+  public-data:
+  tmp-data:
+  log-data:
+  node-modules:
+  bundle:
+  mysql-data:
+    driver: local
+  mail-data:

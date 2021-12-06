@@ -1,0 +1,2 @@
+json.joinedEventCount @joined_event_count
+json.ownerEventCount @owner_event_count

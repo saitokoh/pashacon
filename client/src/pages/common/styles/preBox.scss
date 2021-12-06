@@ -1,0 +1,65 @@
+.main {
+  width: 100%;
+  position: relative;
+  max-height: 75px;
+  overflow: hidden;
+  font-size: 13px;
+  color: #333;
+  line-height: 26px;
+
+  .expandButton {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    background-color: #fff;
+
+    button {
+      font-size: 13px;
+      padding: 5px;
+      color: #29abe2;
+      background-color: #fff;
+      border: transparent;
+      margin-right: 10px;
+      cursor: pointer;
+
+      &::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border: 0px;
+        border-bottom: solid 1px #29abe2;
+        border-right: solid 1px #29abe2;
+        -ms-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        position: absolute;
+        top: 46%;
+        left: 90px;
+        margin-top: -4px;
+      }
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &.close {
+      bottom: -17px;
+
+      button::before {
+        border: 0px;
+        border-top: solid 1px #29abe2;
+        border-left: solid 1px #29abe2;
+        top: 58%;
+        left: 52px;
+      }
+    } 
+  }
+
+  &.openPr {
+    max-height: 9999px;
+    height: auto;
+    overflow: visible;
+  }
+}

@@ -1,0 +1,15 @@
+# webpack
+FROM node:10.16.2
+
+WORKDIR /var/www/pashacon/client
+
+RUN rm /etc/localtime \
+  && echo "Asia/Tokyo" > /etc/timezone \
+  && dpkg-reconfigure -f noninteractive tzdata
+
+COPY ./client/package.json ./
+COPY ./client/package-lock.json ./
+RUN npm install
+
+COPY ./client/ ./
+CMD npm run docker:start

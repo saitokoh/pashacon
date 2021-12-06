@@ -1,0 +1,103 @@
+.main {
+  // min-width: 1140px;
+  min-height: calc(100% - 100px);
+  background-color: #f3f3f3;
+  padding: 53px 20px;
+  box-sizing: border-box;
+  color: #333;
+}
+
+.inner {
+  max-width: 1096px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  .titleBox {
+    border-bottom: 1px solid #455250;
+    margin-bottom: 20px;
+    padding: 5px 15px;
+
+    h1 {
+      font-size: 24px;
+    }
+  }
+
+  .contestTable {
+    margin: 30px auto;
+    max-width: 900px;
+    width: 100%;
+    color: #4a4a4a;
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+    border-color: grey;
+
+    thead tr th {
+      font-size: 14px;
+      font-weight: bold;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 15px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .contestState {
+      min-width: 106px;
+    }
+
+    tbody tr {
+
+      td {
+        padding: 15px;
+        background-color: #fff;
+        border-top: 1px solid #dbdbdb;
+        border-bottom: 1px solid #dbdbdb;
+        vertical-align: middle;
+
+        .descriptionWrap {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .tdMiddle {
+          margin: 15px 10px 5px;
+        }
+
+        .tdBottom {
+          margin: 0 10px;
+        }
+      }
+
+      td:first-child {
+        border-radius: 4px 0 0 4px;
+        border-left: 1px solid #dbdbdb;
+      }
+
+      td:last-child {
+        border-radius: 0 4px 4px 0;
+        border-right: 1px solid #dbdbdb;
+      }
+
+      .contestTitle {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .description {
+        font-size: 14px;
+      }
+    } 
+  }
+}
+
+
+.link {
+  color: #3296d2;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

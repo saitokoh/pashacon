@@ -1,0 +1,230 @@
+.main {
+  // min-width: 1140px;
+  min-height: calc(100% - 100px);
+  background-color: #f3f3f3;
+  padding: 53px 20px;
+  box-sizing: border-box;
+  color: #333;
+}
+
+.inner {
+  max-width: 1096px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  .titleBox {
+    border-bottom: 1px solid #455250;
+    margin-bottom: 20px;
+    padding: 5px 15px;
+
+    h1 {
+      font-size: 24px;
+    }
+  }
+
+  .contestTable {
+    margin: 30px auto;
+    max-width: 900px;
+    width: 100%;
+    color: #4a4a4a;
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+    border-color: grey;
+
+    thead tr th {
+      font-size: 14px;
+      font-weight: bold;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 15px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .contestState {
+      min-width: 106px;
+    }
+
+    .postNum {
+      min-width: 70px;
+    }
+
+    .editSpace {
+      min-width: 42px;
+    }
+
+    tbody tr {
+
+      td {
+        padding: 15px;
+        background-color: #fff;
+        border-top: 1px solid #dbdbdb;
+        border-bottom: 1px solid #dbdbdb;
+        vertical-align: middle;
+
+        .descriptionWrap {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .tdBottom {
+          margin: 15px 10px 0;
+          display: flex;
+          align-items: center;
+        }
+
+        input {
+          width: 60%;
+          padding: 5px 5px;
+          font-size: 15px;
+          border: 1px solid #c3c3c3;
+          border-radius: 3px;
+        }
+      }
+
+      td:first-child {
+        border-radius: 4px 0 0 4px;
+        border-left: 1px solid #dbdbdb;
+      }
+
+      td:last-child {
+        border-radius: 0 4px 4px 0;
+        border-right: 1px solid #dbdbdb;
+      }
+
+      .contestTitle {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .description {
+        font-size: 14px;
+        margin: 2px 0;
+      }
+    } 
+  }
+}
+
+
+.link {
+  color: #3296d2;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// modal関係
+.ContestRegisterModal {
+  width: 90%;
+  color: #333;
+
+  .titleArea {
+    margin: 0 auto;
+    padding: 0 0 5px 5px;
+    border-bottom: 1px solid #455250;
+
+    h2 {
+      font-size: 16px;
+    }
+  }
+
+  .inputAreaWrap {
+    width: 400px;
+    margin: 20px auto;
+
+    .inputArea {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      margin: 10px 0;
+
+      label {
+        margin-bottom: 5px;
+        font-size: 14px;
+      }
+
+      input, textarea, pre {
+        width: 100%;
+        padding: 5px 5px;
+        font-size: 17px;
+        border: 1px solid #c3c3c3;
+        border-radius: 3px;
+
+        &:focus {
+          color: #222;
+          border: 1px #14b4b4 solid;
+          outline: medium none;
+        }
+      }
+
+      textarea {
+        min-height: 150px;
+      }
+
+      pre {
+        min-height: 100px;
+        max-height: 150px;
+        overflow-y: scroll;
+      }
+
+      .contestTitle {
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
+  }
+     
+  .modalButtonArea {
+    display: flex;
+    justify-content: center;
+
+    button {
+      margin: 0 10px;
+    }
+  }
+}
+
+.ContestRegisteredModal {
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 15px;
+    margin: 30px auto;
+    width: 90%;
+    line-height: 25px;
+    text-align: center;
+  }
+
+  .urlBox {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 5px 5px;
+      font-size: 17px;
+      border: 1px solid #c3c3c3;
+      border-radius: 3px;
+    }
+  }
+}
