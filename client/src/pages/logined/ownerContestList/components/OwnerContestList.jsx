@@ -121,7 +121,7 @@ export default function OwnerContestList() {
           <div className={styles.titleBox}>
             <h1>主催コンテスト</h1>
           </div>
-          <div className={styles.buttonAresa}>
+          <div className={styles.buttonArea}>
             <CVButton width={280} height={45} fontSize={15} onClick={openContestRegisterModal}>
               新しくフォトコンテストを作成する
             </CVButton>
@@ -164,6 +164,38 @@ export default function OwnerContestList() {
               ))}
             </tbody>
           </table>
+          <div className={[styles.forSp, styles.spWrap].join(" ")}>
+            <ul>
+              {events.length == 0 ? (
+                <li>
+                  <div className={styles.listSp}>
+                    主催したコンテストはありません
+                  </div>
+                </li>
+              ) : events.map((event, i) => (
+                <li key={i}>
+                  <div className={styles.listSp}>
+                    <div className={styles.listSpTop}>
+                      <label className={[commonStyles.badge, contestStateStyle(event.eventStatusName)].join(" ")}>
+                        {event.eventStatusDisplayName}
+                      </label>
+                      <button className={commonStyles.normalButton}>詳細</button>
+                    </div>
+
+                    <div className={styles.listSpTitle}>
+                      <Link to={`/contest/${event.id}`} className={[styles.link, styles.contestTitle].join(" ")}>
+                        {event.name}
+                      </Link>
+                    </div>
+                    <div className={[styles.listSpBottom, styles.descriptionWrap].join(" ")}>
+                      <span className={styles.description}>招待URL：</span>
+                      <input type="text" defaultValue={event.invitationUrl} />
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
       <Loading ref={loadingRef} />
@@ -217,7 +249,7 @@ export default function OwnerContestList() {
       </Modal>
       <Modal ref={contestRegisteredModalRef} needCloseButton={true}>
         <div className={styles.ContestRegisteredModal}>
-          <h2>新しいフォトコンテストが作成されました！</h2>
+          <h2>フォトコンテストが作成されました！</h2>
           <p>
             招待URLを発行しましたので、<br />コンテストに参加予定の方に共有しましょう。<br/>
             招待URLからアカウントの登録、またはログインを行うと、<br />コンテストに参加することが出来ます。

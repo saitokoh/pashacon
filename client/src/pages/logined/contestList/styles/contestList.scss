@@ -1,10 +1,15 @@
+@import 'pages/common/styles/common.scss';
+
 .main {
-  // min-width: 1140px;
   min-height: calc(100% - 100px);
   background-color: #f3f3f3;
   padding: 53px 20px;
   box-sizing: border-box;
   color: #333;
+  
+  @include sp {
+    padding: 30px 10px;
+  }
 }
 
 .inner {
@@ -20,6 +25,10 @@
 
     h1 {
       font-size: 24px;
+  
+      @include sp {
+        font-size: 20px;
+      }
     }
   }
 
@@ -31,6 +40,10 @@
     border-collapse: separate;
     border-spacing: 0px 10px;
     border-color: grey;
+    
+    @include sp {
+      display: none;
+    }
 
     thead tr th {
       font-size: 14px;
@@ -88,6 +101,47 @@
         font-size: 14px;
       }
     } 
+  }
+}
+
+// Sp用
+.spWrap {
+  margin-top: 20px;
+}
+
+.listSp {
+  margin: 15px auto;
+  padding: 15px;
+  max-width: 450px;
+  width: calc(100% - 30px);
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  vertical-align: middle;
+
+  .listSpTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .listSpTitle {
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 25px;
+  }
+
+  .listSpBottom {
+    display: flex;
+    justify-content: flex-end;
+    
+    span {
+      margin-left: 10px;
+    }
+  }
+  
+  .description {
+    font-size: 14px;
   }
 }
 

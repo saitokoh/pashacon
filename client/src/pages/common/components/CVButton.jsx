@@ -7,7 +7,7 @@ export default function CVButton({ children, width, height, fontSize, emphasize,
   return (
     <button
       className={[styles.cvButton, emphasize && styles.emphasize ].join(" ")}
-      style={{ width, height, fontSize, borderRadius: height / 2 }}
+      style={{ width, height, fontSize, borderRadius: (height / 2) || null }}
       {...attributes}
     >
       {children}

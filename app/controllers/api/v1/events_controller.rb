@@ -25,7 +25,6 @@ class Api::V1::EventsController < Api::V1::ApplicationController
 
     begin
       ActiveRecord::Base.transaction do
-        byebug
         @event.save
         @current_user.join_event(@event)
       end

@@ -91,14 +91,20 @@ export default class ImageEditor {
           // base64でsrcに出力
           srcSetter(this.canvas.toDataURL('image/jpg'))
 
+          console.log(width, height)
           if (width > maxImageWidthAndHeight) {
-            previewHeightSetter(Math.round(height * maxImageWidthAndHeight / width))
-            previewWidthSetter(maxImageWidthAndHeight)
+            height = Math.round(height * maxImageWidthAndHeight / width)
+            width = maxImageWidthAndHeight
           }
+
+          console.log(width, height)
           if (height > maxImageWidthAndHeight) {
-            previewWidthSetter(Math.round(width * maxImageWidthAndHeight / height))
-            previewHeightSetter(maxImageWidthAndHeight)
+            width = Math.round(width * maxImageWidthAndHeight / height)
+            height = maxImageWidthAndHeight
           }
+          console.log(width, height)
+          previewWidthSetter(width)
+          previewHeightSetter(height)
         }
       }
     })

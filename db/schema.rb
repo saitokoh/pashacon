@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2021_12_04_114332) do
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "post_id"
     t.string "comment", null: false
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_12_04_114332) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
     t.bigint "owner_user_id"
     t.string "name", null: false
     t.string "token", null: false
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_12_04_114332) do
     t.index ["owner_user_id"], name: "index_events_on_owner_user_id"
   end
 
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "images", force: :cascade do |t|
     t.bigint "post_id"
     t.string "path", null: false
     t.datetime "created_at", null: false
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_12_04_114332) do
     t.index ["post_id"], name: "index_images_on_post_id"
   end
 
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "event_id"
     t.string "description"
@@ -51,7 +54,7 @@ ActiveRecord::Schema.define(version: 2021_12_04_114332) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "user_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "user_events", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "event_id"
     t.datetime "created_at", null: false
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_12_04_114332) do
     t.index ["user_id"], name: "index_user_events_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.integer "user_type_id", default: 1, null: false
@@ -89,7 +92,7 @@ ActiveRecord::Schema.define(version: 2021_12_04_114332) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  create_table "votes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "votes", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "post_id"
     t.datetime "created_at", null: false

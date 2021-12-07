@@ -1,0 +1,75 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Docker起動(docker start)",
+      "type": "shell",
+      "linux": {
+        "command": "sudo service docker start"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "開発環境起動（docker-compose up）",
+      "type": "shell",
+      "linux": {
+        "command": "docker-compose up -d"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "開発環境停止（docker-compose down）",
+      "type": "shell",
+      "linux": {
+        "command": "docker-compose down"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "開発環境再構築（docker-compose build）",
+      "type": "shell",
+      "linux": {
+        "command": "docker-compose build"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": [],
+      "group": "build"
+    },
+  ]
+}

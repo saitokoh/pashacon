@@ -1,5 +1,3 @@
-import "core-js/stable";
-import "regenerator-runtime/runtime";
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from "react-redux"
@@ -69,7 +67,7 @@ export default function ContestList() {
             <tbody>
               {events.length == 0 ? (
                 <tr style={{ textAlign: 'center' }}>
-                  <td colSpan="4">主催したコンテストはありません</td>
+                  <td colSpan="4">参加したコンテストはありません</td>
                 </tr>
               ) : events.map((event, i) => (
                 <tr key={i}>
@@ -81,7 +79,7 @@ export default function ContestList() {
                     </div>
                     <div className={[styles.tdMiddle, styles.descriptionWrap].join(" ")}>
                       <span className={styles.description}>主催者：</span>
-                      <span className={styles.description}>{event.ownerName}さん</span>
+                      <span className={styles.description}>{event.ownerName}</span>
                     </div>
                   </td>
 
@@ -96,6 +94,39 @@ export default function ContestList() {
               ))}              
             </tbody>
           </table>
+          <div className={[styles.forSp, styles.spWrap].join(" ")}>
+            <ul>
+              {events.length == 0 ? (
+                <li>
+                  <div className={styles.listSp}>
+                    参加したコンテストはありません
+                  </div>
+                </li>
+              ) : events.map((event, i) => (
+                <li key={i}>
+                  <div className={styles.listSp}>
+                    <div className={styles.listSpTop}>
+                      <label className={[commonStyles.badge, contestStateStyle(event.eventStatusName)].join(" ")}>
+                        {event.eventStatusDisplayName}
+                      </label>
+                      <span className={styles.description}>主催者：{event.ownerName}</span>
+                    </div>
+
+                    <div className={styles.listSpTitle}>
+                      <Link to={`/contest/${event.id}`} className={[styles.link, styles.contestTitle].join(" ")}>
+                        {event.name}
+                      </Link>
+                    </div>
+                    <div className={[styles.listSpBottom].join(" ")}>
+                      <span className={styles.description}>投稿数：{event.postNum}件</span>
+                      <span className={styles.description}>/</span>
+                      <span className={styles.description}>{user.name}さんの投稿数：{event.myPostNum}件</span>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
       <Loading ref={loadingRef} />

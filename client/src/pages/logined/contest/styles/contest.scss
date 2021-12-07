@@ -1,9 +1,15 @@
+@import 'pages/common/styles/common.scss';
+
 .main {
   min-height: calc(100% - 100px);
   background-color: #f3f3f3;
   padding: 53px 20px;
   box-sizing: border-box;
   color: #333;
+  
+  @include sp {
+    padding: 30px 10px;
+  }
 }
 
 .inner {
@@ -16,15 +22,24 @@
     border-bottom: 1px solid #455250;
     margin-bottom: 20px;
     padding: 5px 15px;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
+    @include sp {
+      justify-content: space-between;
+    }
 
     h1 {
       font-size: 24px;
+  
+      @include sp {
+        font-size: 20px;
+      }
     }
 
     small {
       margin-left: 10px;
+      min-width: 60px;
     }
   }
 
@@ -39,11 +54,11 @@
     justify-content: center;
     flex-wrap: wrap;
     max-width: 590px;
+    width: 100%;
 
     .box {
       margin: 30px 0;
       width: 100%;
-      min-width: 300px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -64,8 +79,6 @@
 
       .imageWrap {
         width: 100%;
-        max-height: 750px;
-        overflow: hidden;
         
         img {
           width: 100%;
@@ -91,6 +104,7 @@
           color: #8e8e8e;
           font-size: 14px;
           cursor: pointer;
+          box-sizing: border-box;
         }
 
         .commentStr {
@@ -101,6 +115,7 @@
             font-size: 14px;
             line-height: 18px;
             color: #262626;
+            box-sizing: border-box;
           }
 
           pre {
@@ -129,7 +144,7 @@
 
         .dummyTextarea {
           padding: 10px 0 10px 10px;
-          min-width: 100%;
+          width: 100%;
           max-width: 100%;
           min-height: 40px;
           font-size: 15px;
@@ -148,6 +163,7 @@
           height: 100%;
           resize: none;
           padding: 10px 0 10px 10px;
+          box-sizing: border-box;
           border: none;
           font-size: 15px;
           line-height: 15px;
@@ -168,6 +184,11 @@
   position: fixed;
   bottom: 40px;
   right: 30px;
+  
+  @include sp {
+    bottom: 30px;
+    right: 20px;
+  }
 }
 
 .imageAreaWrap {

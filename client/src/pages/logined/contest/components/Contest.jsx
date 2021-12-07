@@ -17,7 +17,6 @@ import styles from '../styles/contest.scss'
 import commonStyles from 'pages/common/styles/common.scss'
 
 // const
-const maxImageWidthAndHeight = 400;
 const defaultImagePath = "/images/set_picture.png"
 
 export default function Contest() {
@@ -25,6 +24,7 @@ export default function Contest() {
   const postModal = useRef(null)
   const { eventId } = useParams();
 
+  const [maxImageWidthAndHeight, setMaxImageWidthAndHeight] = useState(300)
   const [event, setEvent] = useState({})
   const [posts, setPosts] = useState([])
   const [postDescription, setPostDescription] = useState("")
@@ -34,11 +34,22 @@ export default function Contest() {
   const [iconUrl, setIconUrl] = useState(defaultImagePath)
   const [imageEditor, setImageEditor] = useState(new ImageEditor())
   const [postErrorMessages, setPostErrorMessages] = useState([])
+  const [modalTop, setModalTop] = useState(200)
 
   // redux store
   const user = useSelector((state) => state.reduxTokenAuth.currentUser).attributes;
 
   // methods
+  // 画面サイズ取得のための処理
+  const getWindowDimensions = () => {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+  }
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions()) // 画面サイズ
+
   const handlePostDescription = e => {
     setPostErrorMessages([])
     setPostDescription(e.target.value)
@@ -177,8 +188,27 @@ export default function Contest() {
 
   // effects
   useEffect(() => {
+    // データ取得
     fetchPost()
+
+    // 画面サイズ取得の為の処理
+    const onResize = () => {
+      setWindowDimensions(getWindowDimensions());
+    }
+    window.addEventListener('resize', onResize);
+    
+    return () => window.removeEventListener('resize', onResize);
   }, [])
+
+  // 画面サイズ変更時の処理
+  useEffect(() => {
+    if (windowDimensions.width <= 755) {
+      setModalTop(135)
+    } else {
+      setModalTop(200)
+    }
+    
+  }, [windowDimensions])
 
   return (
     <>
@@ -240,7 +270,7 @@ export default function Contest() {
         </CVButton>
       </div>
       <Loading ref={loadingRef} />
-      <Modal ref={postModal} needCloseButton={true} top={250}>
+      <Modal ref={postModal} needCloseButton={true} top={modalTop}>
         {postErrorMessages.length > 0 ? (
           <div className={styles.errorArea}>
             {postErrorMessages.map((msg, i) => <p key={i}>{msg}</p>)}

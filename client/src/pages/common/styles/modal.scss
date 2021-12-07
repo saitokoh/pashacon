@@ -1,3 +1,5 @@
+@import 'pages/common/styles/common.scss';
+
 .mainWrap {
   position: fixed;
   top: 0;
@@ -19,7 +21,7 @@
   top: 40%;
   left: 50%;
   margin: 0 auto;
-  min-width: 600px;
+  min-width: 500px;
   padding: 50px;
   box-sizing: border-box;
   background-color: #fff;
@@ -28,6 +30,15 @@
   box-shadow: 0 0 5px 5px rgba(0,0,0, 0.1);
   z-index: 900;
   display: none;
+    
+  @include sp {
+    padding: 30px 10px;
+    max-width: 400px;
+    min-width: 0px;
+    width: 95%;
+    top: 160px;
+    max-height: 90%;
+  }
 
   .closeButton {
     position: absolute;

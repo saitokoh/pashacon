@@ -1,3 +1,5 @@
+@import 'pages/common/styles/common.scss';
+
 .header {
   position: fixed;
   width: 100%;
@@ -11,7 +13,7 @@
 }
 
 .inner {
-  margin: 0 auto;
+  margin: 0 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,7 +31,6 @@
   align-items: center;
   width: 200px;
   cursor: pointer;
-  margin-left: 15px;
 
   &:hover {
     opacity: .8;
@@ -39,6 +40,10 @@
     font-size: 22px;
     font-weight: bold;
     margin-left: 5px;
+    
+    @include sp {
+      font-size: 18px;
+    }
   }
 }
 
@@ -47,6 +52,10 @@
   height: 100%;
   display: flex;
   align-items: center;
+
+  @include sp {
+    display: none;
+  }
 
   ul {
     display: flex;
@@ -62,6 +71,12 @@
       &:hover {
         background-color: #f3f3f3;
         cursor: pointer;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        height: 100%;
       }
 
       span {
@@ -92,8 +107,121 @@
     background-color: #f3f3f3;
     cursor: pointer;
   }
+
+  @include sp {
+    display: none;
+  }
 }
 
 .headerBack {
   height: 64px;
 }
+
+.navSwitchChk {
+  display: none;
+}
+
+.navSwitch {
+  height: 26px;
+  width: 35px;
+  cursor: pointer;
+  position: relative;
+  display: block;
+  
+  span {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transition: .2s;
+    margin: auto;
+    height: 2px;
+    background-color: #666;
+    border-radius: 3px;
+    display: block;
+    width: 100%;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    transition: .2s;
+    height: 2px;
+    border-radius: 3px;
+    background-color: #666;
+    display: block;
+    width: 100%;
+    transform-origin: left;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    transition: .2s;
+    height: 2px;
+    border-radius: 3px;
+    background-color: #666;
+    display: block;
+    width: 100%;
+    transform-origin: left;
+  }
+}
+
+.navSwitchOpen {
+  span {
+    display: none;
+  }
+
+  &::before {
+    transform: rotate(-45deg) translate(3px, 4px);
+  }
+
+  &::after {
+    transform: rotate(45deg) translate(3px, -4px);
+  }
+}
+
+
+.spMenuPrelogin {
+  display: block;
+  &.none {
+    height: 0;
+    border: 0px solid #b9b9b9;
+    transition: all .2s;
+  }
+
+  position: absolute;
+  top: 60px;
+  right: 3px;
+  width: 200px;
+  height: 135px;
+  transition: height .2s;
+  background-color: #fff;
+  box-sizing: border-box;
+  border: 1px solid #b9b9b9;
+  overflow: hidden;
+
+  ul {
+    li {
+      position: relative;
+      // height: 40px;
+      line-height: 25px;
+      font-size: 18px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      color: #3c3c3c;
+      text-decoration: none;
+      padding: 10px 15px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #f3f3f3;
+      }
+    }
+  }
+}
+

@@ -1,15 +1,27 @@
 version: '3'
 services:
+  # db:
+  #   image: mysql:5.7
+  #   command: mysqld --character-set-server=utf8mb4
+  #   ports: 
+  #     - '3306:3306'
+  #   environment:
+  #     MYSQL_DATABASE: pashacon_development
+  #     MYSQL_ALLOW_EMPTY_PASSWORD: 1
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
   db:
-    image: mysql:5.7
-    command: mysqld --character-set-server=utf8mb4
-    ports: 
-      - '3306:3306'
+    image: postgres:13.2
     environment:
-      MYSQL_DATABASE: pashacon_development
-      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: pashacon_development
+      POSTGRES_USER: pashacon
+      POSTGRES_PASSWORD: pashacon
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=C"
+    ports:
+      - 5432:5432
     volumes:
-      - mysql-data:/var/lib/mysql
+      - postgres-data:/var/lib/postgresql/data
 
   rails:
     build:
@@ -28,10 +40,10 @@ services:
       RAILS_ENV: development
       HOST: "localhost"
       PORT: 3000
-      DB_MYSQL_DATABASE: "pashacon_development"
-      DB_MYSQL_SOCKET: "/var/run/mysqld/mysqld.sock"
-      DB_MYSQL_USERNAME: "root"
-      DB_MYSQL_HOST: "db"
+      # DB_MYSQL_DATABASE: "pashacon_development"
+      # DB_MYSQL_SOCKET: "/var/run/mysqld/mysqld.sock"
+      # DB_MYSQL_USERNAME: "root"
+      # DB_MYSQL_HOST: "db"
       MAIL_SMTP_ADDRESS: "mail"
       MAIL_SMTP_PORT: 1025
       MAIL_SMTP_DOMAIN: ""
@@ -97,3 +109,5 @@ volumes:
   mysql-data:
     driver: local
   mail-data:
+  postgres-data:
+    driver: local
