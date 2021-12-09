@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom'
-import { connect, useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { loginedRoutes } from 'conf/routes'
 import { signOutUser } from 'conf/redux-token-auth-config';
 

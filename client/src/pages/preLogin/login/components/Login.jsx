@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react'
 import { Link, useParams } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
 import { push } from 'connected-react-router';
@@ -7,11 +7,13 @@ import { signInUser } from 'conf/redux-token-auth-config'
 import Header from 'pages/common/components/PreLoginHeader'
 import Footer from 'pages/common/components/Footer'
 import Button from 'pages/common/components/Button'
+import Loading from 'pages/common/components/Loading'
 
 // style
 import styles from '../styles/login.scss'
 
 function Login({ signInUser }) {
+  const loadingRef = useRef(null)
   const dispatch = useDispatch();
   const { token } = useParams();
 
@@ -29,17 +31,20 @@ function Login({ signInUser }) {
       return
     }
     setIsSubmitting(true);
+    loadingRef.current.startLoading()
     let params = { email, password }
     if (token) {
       params = {...params, token}
     }
     signInUser(params).then(res => {
       setIsSubmitting(false);
+      loadingRef.current.stopLoading()
       dispatch(push('/'));
     }).catch(error => {
       setIsSubmitting(false);
+      loadingRef.current.stopLoading()
       setErrorMessage({password: error.response.data.errors[0]})
-    });
+    })
   }
 
   // 簡易バリデーション
@@ -137,7 +142,8 @@ function Login({ signInUser }) {
         </form>
       </div>
     </main>
-    <Footer/>
+    <Footer />
+    <Loading ref={loadingRef} />
   </>
   );
 }

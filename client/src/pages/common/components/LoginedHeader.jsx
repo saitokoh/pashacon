@@ -55,6 +55,7 @@ export default function LoginedHeader({signOut}) {
             <li onClick={() => toPath('/contests')}><span>参加コンテスト</span></li>
             <li onClick={() => toPath('/ownerContests')}><span>主催コンテスト</span></li>
             <li onClick={() => toPath('/user')}><span>ユーザー情報</span></li>
+            <li onClick={signOut}><span>ログアウト</span></li>
           </ul>
         </div>
       </header>
