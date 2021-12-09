@@ -38,7 +38,7 @@ export default function OwnerContestList() {
     loadingRef.current.startLoading()
     setIsSubmitting(true);
     try {
-      const res = await axios.get(`/api/v1/event/ownerEvents`)
+      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/event/ownerEvents`)
       setEvents(res.data.events)
     } catch (e) {
       console.log(e)
@@ -91,7 +91,7 @@ export default function OwnerContestList() {
     loadingRef.current.startLoading()
     setIsSubmitting(true);
     try {
-      const res = await axios.post(`/api/v1/event/register`, {
+      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/event/register`, {
         name: newContestName,
         description: newContestDescription
       })

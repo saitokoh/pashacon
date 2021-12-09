@@ -1,0 +1,1 @@
+origins 'http://localhost:3000', 'https://pashacon.herokuapp.com/api'

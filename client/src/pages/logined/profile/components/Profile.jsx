@@ -25,7 +25,7 @@ export default function Profile() {
     (async () => {
       loadingRef.current.startLoading()
       try {
-        const res = await axios.get(`/api/v1/corporation/profile`)
+        const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/corporation/profile`)
         setProfile(res.data.company_user)
       } catch (e) {
         console.log(e)

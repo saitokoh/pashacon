@@ -66,7 +66,7 @@ function Register({ registerUser }) {
   const fetchInvitation = async () => {
     loadingRef.current.startLoading()
     try {
-      await axios.get(`/api/v1/prelogin/event/${token}`)
+      await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/prelogin/event/${token}`)
     } catch (e) {
       console.log(e)
     } finally {
