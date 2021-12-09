@@ -55,8 +55,7 @@
     "stg:app": "webpack --config webpack.app.stg.js",
     "start:app": "webpack --config webpack.app.dev.js",
     "start:app:serve": "webpack-dev-server --config webpack.app.dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm run build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC"

@@ -1,5 +1,8 @@
 {
   "name": "pashacon",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "scripts": {
+    "heroku-postbuild": "cd client && npm run build"
+  }
 }
