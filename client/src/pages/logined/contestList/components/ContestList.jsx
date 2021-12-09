@@ -23,7 +23,7 @@ export default function ContestList() {
   const fetchContests = async () => {
     loadingRef.current.startLoading()
     try {
-      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/events`)
+      const res = await axios.get(`/api/v1/events`)
       setEvents(res.data.events)
     } catch (e) {
       console.log(e)

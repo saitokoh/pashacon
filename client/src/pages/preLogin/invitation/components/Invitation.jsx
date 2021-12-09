@@ -45,7 +45,7 @@ export default function Invitation() {
   const fetchInvitation = async () => {
     loadingRef.current.startLoading()
     try {
-      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/prelogin/event/${token}`)
+      const res = await axios.get(`/api/v1/prelogin/event/${token}`)
       setOwnerName(res.data.event.ownerUserName)
       setTitle(res.data.event.name)
       setDescription(res.data.event.description)

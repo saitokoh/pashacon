@@ -31,7 +31,7 @@ export default function PasswordEdit() {
   const changePassword = () => {
     loadingRef.current.startLoading()
     setIsSubmitting(true);
-    axios.patch(`${process.env.REACT_APP_SERVER_URL}/api/v1/corporation/profile/password`, { password: password, password_confirmation: confirmPassword}).then(response => {
+    axios.patch(`/api/v1/corporation/profile/password`, { password: password, password_confirmation: confirmPassword}).then(response => {
       loadingRef.current.stopLoading()
       setIsSubmitting(false);
       dispatch(push({

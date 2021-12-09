@@ -32,7 +32,7 @@ export default function Home() {
   const fetchHomeInfo = async () => {
     loadingRef.current.startLoading()
     try {
-      const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/v1/home`)
+      const res = await axios.get(`/api/v1/home`)
       setJoinedContestNum(res.data.joinedEventCount)
       setOwnerContestNum(res.data.ownerEventCount)
     } catch (e) {

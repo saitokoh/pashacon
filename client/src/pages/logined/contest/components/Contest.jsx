@@ -128,7 +128,7 @@ export default function Contest() {
 
     try {
       // 投稿api
-      await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/event/${eventId}/post`, formData, { headers: { 'content-type': 'multipart/form-data' } })
+      await axios.post(`/api/v1/event/${eventId}/post`, formData, { headers: { 'content-type': 'multipart/form-data' } })
       // posts取得api
       await fetchPost()
       // modal close
@@ -153,7 +153,7 @@ export default function Contest() {
     loadingRef.current.startLoading()
 
     try {
-      await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/v1/post/${postId}/comment/register`, {
+      await axios.post(`/api/v1/post/${postId}/comment/register`, {
         user_id: user.id,
         post_id: postId,
         comment: post.draftComment
