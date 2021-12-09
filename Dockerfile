@@ -1,4 +1,4 @@
-FROM ruby:2.5.5
+FROM ruby:2.6.6
 
 RUN rm /etc/localtime \
   && echo "Asia/Tokyo" > /etc/timezone \
