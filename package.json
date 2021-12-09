@@ -56,7 +56,7 @@
     "start:app": "webpack --config webpack.app.dev.js",
     "start:app:serve": "webpack-dev-server --config webpack.app.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd client && npm run build:app"
+    "heroku-postbuild": "cd client && npm install && npm run build:app"
   },
   "author": "",
   "license": "ISC"
