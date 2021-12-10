@@ -1,5 +1,3 @@
-import "core-js/stable";
-import "regenerator-runtime/runtime";
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from "react-redux"
@@ -237,10 +235,10 @@ export default function OwnerContestList() {
               </div>
             </div>
             <div className={styles.modalButtonArea}>
-              <Button width={210} height={40} fontSize={14} outline={true} onClick={toNewContestInput} disabled={isSubmitting}>
+              <Button width={230} height={40} fontSize={14} outline={true} onClick={toNewContestInput} disabled={isSubmitting}>
                 戻る
               </Button>
-              <Button width={210} height={40} fontSize={14} onClick={registerNewContest} disabled={isSubmitting}>
+              <Button width={230} height={40} fontSize={14} onClick={registerNewContest} disabled={isSubmitting}>
                 フォトコンテストを作成する
               </Button>
             </div>
