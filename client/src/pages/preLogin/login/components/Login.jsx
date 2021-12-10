@@ -84,7 +84,7 @@ function Login({ signInUser }) {
                   </label>
                 </div>
                 <div className={styles.input}>
-                  <input type="email" autoComplete="email" placeholder="example@example.co.jp"
+                  <input type="email" autoComplete="email" placeholder="example@example.co.jp" name="email"
                     maxLength="50" value={email} onChange={e => setEmail(e.target.value)}
                   />
                   {errorMessage.email && <span className={styles.isError}>{errorMessage.email}</span>}
@@ -98,7 +98,7 @@ function Login({ signInUser }) {
                 </div>
                 {showPassword ?
                   <div className={styles.input}>
-                    <input type="text" className={styles.validateTarget}
+                    <input type="text" className={styles.validateTarget} name="password"
                       maxLength="50" autoComplete="current-password"
                       value={password} onChange={e => setPassword(e.target.value)}
                       />
@@ -111,7 +111,7 @@ function Login({ signInUser }) {
                   </div>
                   :
                   <div className={styles.input}>
-                    <input type="password" className={styles.validateTarget}
+                    <input type="password" className={styles.validateTarget} name="password"
                       maxLength="50" autoComplete="current-password"
                       value={password} onChange={e => setPassword(e.target.value)}
                     />
@@ -127,8 +127,8 @@ function Login({ signInUser }) {
             </div>
             <p className={styles.buttonArea}>
               <Button type="submit"
-                width={270}
-                height={57}
+                width={200}
+                height={50}
                 fontSize={18}
                 disabled={isSubmitting}
               >

@@ -19,19 +19,6 @@ export default function Invitation() {
   const [ownerName, setOwnerName] = useState("")
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
-//   const [description, setDescription] = useState(`基本的には去年と同じスタイル。見る専無しの参加型です😁👍
-
-// ★新システム導入⁉️★
-// 今年はLINEノートではなく、新しいシステムを開発導入予定！（ガチ感。笑）
-
-// →去年のアンケートに最初に投稿した人、若干不利な説とコメント書きたいというリクエストにお応えして、さいこーと一緒に、この企画のみのためのソフト開発中です（一緒にと言いつつ、ほぼ全てさいこーに丸投げ。笑）
-
-// ☆なぜやるのか？★
-// 去年楽しかったから、今年もやりたいわけさ(^^)
-// 久々に去年の投稿みて、やっぱり面白い🤣
-
-// みんなそれぞれの『日常のクスッと』を共有して、クスクスしようぜ😁
-// 今年一年どんなことがあったかなと振り返りながら参加してくれたら楽しいこと間違いない！`)
 
   // methods
   const toLogin = () => {
@@ -70,9 +57,9 @@ export default function Invitation() {
           <h2 className={styles.title}>{title}</h2>
           <pre className={styles.description}>{description}</pre>
           <div className={styles.inner}>
-            <p>参加する方は</p>
+            <p>アカウントをお持ちの方は</p>
             <Button width={200} height={40} fontSize={16} onClick={toLogin}>ログインページへ</Button>
-            <p>または</p>
+            <p>アカウントをお持ちでない方は</p>
             <Button width={200} height={40} fontSize={16} onClick={toRegister}>新規会員登録ページへ</Button>
           </div>
         </div>

@@ -221,7 +221,7 @@ export default function Contest() {
             <div className={styles.row}>
 
               {posts.length == 0 ? (
-                <div>投稿がありません</div>
+                <div className={styles.nothing}>投稿がありません</div>
               ) : posts.map((post,i) => (
                 <div key={i} className={styles.box}>
                   <div className={styles.postName}>

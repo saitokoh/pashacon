@@ -80,7 +80,7 @@
       border: 1px solid #b9b9b9;
       border-radius: 3px;
       width: calc(100%);
-      font-size: 14px;
+      font-size: 16px;
       padding: 5px;
       margin-top: 5px;
       background-color: $color-white;
@@ -174,14 +174,14 @@
 .passwordEye {
   position: absolute;
   right: 14px;
-  top: 12px;
+  top: 16px;
   cursor: pointer;
 }
 
 .passwordEyeSlash {
   position: absolute;
   right: 14px;
-  top: 7.5px;
+  top: 11px;
   cursor: pointer;
 }
 

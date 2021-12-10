@@ -1,0 +1,7 @@
+ja:
+  devise_token_auth:
+    sessions:
+      bad_credentials: "メールアドレスかパスワードが間違っています"
+      user_not_found: "アカウントが見つかりません"
+    token_validations:
+      invalid: "トークンの有効期限が切れました。再度ログインしてください"

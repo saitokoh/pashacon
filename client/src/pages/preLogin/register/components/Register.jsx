@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
 import { push } from 'connected-react-router';
 import { axios } from "redux-token-auth"
@@ -32,12 +32,15 @@ function Register({ registerUser }) {
     }
     setIsSubmitting(true);
     let params = { name, email, password, passwordConfirmation: password, token }
-    
+
+    loadingRef.current.startLoading()
     registerUser(params).then(res => {
       setIsSubmitting(false);
       dispatch(push('/'));
+      loadingRef.current.stopLoading()
     }).catch(error => {
       setIsSubmitting(false);
+      loadingRef.current.stopLoading()
       console.log(error)
       setErrorMessage({password: error.response.data.errors[0]})
     });
@@ -76,7 +79,6 @@ function Register({ registerUser }) {
 
   useEffect(() => {
     scrollTo(0, 0);
-    console.log("a")
     fetchInvitation()
   }, [])
 
@@ -95,7 +97,7 @@ function Register({ registerUser }) {
                   </label>
                 </div>
                 <div className={styles.input}>
-                  <input type="text" maxLength="50" value={name} onChange={e => setName(e.target.value)}
+                  <input type="text" maxLength="50" value={name} onChange={e => setName(e.target.value)} name="name"
                   />
                   {errorMessage.name && <span className={styles.isError}>{errorMessage.name}</span>}
                 </div>
@@ -107,7 +109,7 @@ function Register({ registerUser }) {
                   </label>
                 </div>
                 <div className={styles.input}>
-                  <input type="email" autoComplete="email" placeholder="example@example.co.jp"
+                  <input type="email" autoComplete="email" placeholder="example@example.co.jp" name="email"
                     maxLength="50" value={email} onChange={e => setEmail(e.target.value)}
                   />
                   {errorMessage.email && <span className={styles.isError}>{errorMessage.email}</span>}
@@ -121,7 +123,7 @@ function Register({ registerUser }) {
                 </div>
                 {showPassword ?
                   <div className={styles.input}>
-                    <input type="text" maxLength="50" autoComplete="current-password"
+                    <input type="text" maxLength="50" autoComplete="current-password" placeholder="※6文字以上"
                       value={password} onChange={e => setPassword(e.target.value)}
                     />
                     <img
@@ -133,7 +135,7 @@ function Register({ registerUser }) {
                   </div>
                   :
                   <div className={styles.input}>
-                    <input type="password" maxLength="50" autoComplete="current-password"
+                    <input type="password" maxLength="50" autoComplete="current-password" placeholder="※6文字以上"
                       value={password} onChange={e => setPassword(e.target.value)}
                     />
                     <img
@@ -148,8 +150,8 @@ function Register({ registerUser }) {
             </div>
             <p className={styles.buttonArea}>
               <Button type="submit"
-                width={270}
-                height={57}
+                width={200}
+                height={50}
                 fontSize={18}
                 disabled={isSubmitting}
               >
