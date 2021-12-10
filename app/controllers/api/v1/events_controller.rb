@@ -35,9 +35,33 @@ class Api::V1::EventsController < Api::V1::ApplicationController
     end
   end
 
+  def update
+    @event = Event.find(params[:event_id])
+    if @event.present?
+      @event.assign_attributes(update_params)
+      if @event.save
+        head :no_content
+      else
+        render json: ApiErrorResponse.create_unprocessable_entity_response(@event.errors), status: :unprocessable_entity
+      end
+    else
+      render :json => "Not Found" , status: :not_found
+    end  
+  end
+
   def show
     @event = Event.find(show_params[:event_id])
     if @event.present? && @event.join?(@current_user)
+      @posts = @event.get_posts
+      render formats: :json
+    else
+      render :json => "Not Found" , status: :not_found
+    end
+  end
+
+  def show_owner_event
+    @event = Event.find(show_params[:event_id])
+    if @event.present? && @current_user.owner?(@event)
       @posts = @event.get_posts
       render formats: :json
     else
@@ -51,7 +75,15 @@ class Api::V1::EventsController < Api::V1::ApplicationController
       params.permit(
         :name,
         :description
-      )   
+      )
+    end
+
+    def update_params
+      params.permit(
+        :name,
+        :description,
+        :event_status_id
+      )
     end
 
     def show_params

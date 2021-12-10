@@ -34,7 +34,7 @@ export default function LoginedHeader({signOut}) {
             </Link>
             <div className={styles.serviceList}>
               <ul>
-                <li><Link to={'/contests'}><span>参加コンテスト</span></Link></li>
+                <li><Link to={'/'}><span>参加コンテスト</span></Link></li>
                 <li><Link to={'/ownerContests'}><span>主催コンテスト</span></Link></li>
                 <li><Link to={'/user'}><span>ユーザー情報</span></Link></li>
               </ul>
@@ -52,7 +52,7 @@ export default function LoginedHeader({signOut}) {
         </div>
         <div className={[styles.forSp, styles.spMenuPrelogin, isShowSpMenu ? null : styles.none].join(' ')}>
           <ul>
-            <li onClick={() => toPath('/contests')}><span>参加コンテスト</span></li>
+            <li onClick={() => toPath('/')}><span>参加コンテスト</span></li>
             <li onClick={() => toPath('/ownerContests')}><span>主催コンテスト</span></li>
             <li onClick={() => toPath('/user')}><span>ユーザー情報</span></li>
             <li onClick={signOut}><span>ログアウト</span></li>

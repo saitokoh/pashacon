@@ -17,6 +17,10 @@ class Post < ApplicationRecord
     self.save
   end
 
+  def vote?(user)
+    votes.find{|vote| vote.user.id == user.id}.present?
+  end
+
   def comments_order_created_at
     comments.order(:created_at)
   end

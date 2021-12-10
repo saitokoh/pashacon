@@ -3,13 +3,11 @@ class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
 
   def create
     super{
-      token = params[:token]
-      if token.present?
-        event = Event.post_accepting.find_by(token: token)
-        if event.present?
-          user_event = UserEvent.new({user_id: @resource.id, event_id: event.id})
-          user_event.save!
-        end
+      event = Event.post_accepting.find_by(token: params[:token]) if params[:token].present?
+      # eventが存在して、user_eventが存在しない ＝ 参加していない場合
+      if event.present? && UserEvent.find_by(event_id: event.id, user_id: @resource.id).blank?
+        user_event = UserEvent.new({user_id: @resource.id, event_id: event.id})
+        user_event.save!
       end
     }
   end

@@ -41,6 +41,14 @@ module.exports = {
         to: path.resolve('../public/index.html')
       },
       {
+        from: './src/404.html',
+        to: path.resolve('../public/404.html')
+      },
+      {
+        from: './src/500.html',
+        to: path.resolve('../public/500.html')
+      },
+      {
         from: './src/style.css',
         to: path.resolve('../public/style.css')
       }

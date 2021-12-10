@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { push } from 'connected-react-router'
+import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import { axios } from "redux-token-auth"
 // components
@@ -13,6 +15,7 @@ import commonStyles from 'pages/common/styles/common.scss'
 
 
 export default function OwnerContestList() {
+  const dispatch = useDispatch()
   const loadingRef = useRef(null)
   const contestRegisterModalRef = useRef(null)
   const contestRegisteredModalRef = useRef(null)
@@ -107,6 +110,11 @@ export default function OwnerContestList() {
     }
   }
 
+  // 主催コンテスト詳細画面へ
+  const toOwnerContest = eventId => {
+    dispatch(push(`/ownerContest/${eventId}`))
+  }
+
   // effects
   useEffect(() => {
     fetchOwnerContests()
@@ -157,7 +165,7 @@ export default function OwnerContestList() {
                     </label>
                   </td>
                   <td><label>{event.postNum}件</label></td>
-                  <td><button className={commonStyles.normalButton}>詳細</button></td>
+                  <td><button className={commonStyles.normalButton} onClick={() => toOwnerContest(event.id)}>詳細</button></td>
                 </tr>
               ))}
             </tbody>
@@ -177,7 +185,7 @@ export default function OwnerContestList() {
                       <label className={[commonStyles.badge, contestStateStyle(event.eventStatusName)].join(" ")}>
                         {event.eventStatusDisplayName}
                       </label>
-                      <button className={commonStyles.normalButton}>詳細</button>
+                      <button className={commonStyles.normalButton} onClick={() => toOwnerContest(event.id)}>詳細</button>
                     </div>
 
                     <div className={styles.listSpTitle}>
@@ -257,7 +265,6 @@ export default function OwnerContestList() {
             <input type="text" defaultValue={newContestInvitationUrl}/>
           </div>
         </div>
-          
       </Modal>
     </>
   );

@@ -8,10 +8,10 @@ import PasswordResetComplete from 'pages/preLogin/passwordReset/components/Passw
 import PasswordInitSetInput from 'pages/preLogin/passwordInitSet/components/PasswordInitSetInput';
 import PasswordInitSetComplete from 'pages/preLogin/passwordInitSet/components/PasswordInitSetComplete';
 
-import Home from 'pages/logined/home/components/Home';
 import ContestList from 'pages/logined/contestList/components/ContestList';
 import OwnerContestList from 'pages/logined/ownerContestList/components/OwnerContestList';
 import Contest from 'pages/logined/contest/components/Contest';
+import OwnerContest from 'pages/logined/ownerContest/components/OwnerContest';
 import Profile from 'pages/logined/profile/components/Profile';
 import PasswordEdit from 'pages/logined/password/components/PasswordEdit';
 
@@ -80,14 +80,8 @@ export const preloginRoutes = [
 
 export const loginedRoutes = [
   {
-    name: 'home',
-    path: '/',
-    exact: true,
-    component: Home
-  },
-  {
     name: 'contests',
-    path: '/contests',
+    path: '/',
     exact: true,
     component: ContestList
   },
@@ -96,6 +90,12 @@ export const loginedRoutes = [
     path: '/ownerContests',
     exact: true,
     component: OwnerContestList
+  },
+  {
+    name: 'ownerContest',
+    path: '/ownerContest/:eventId',
+    exact: true,
+    component: OwnerContest
   },
   {
     name: 'contest',

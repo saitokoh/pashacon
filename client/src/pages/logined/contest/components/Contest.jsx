@@ -168,6 +168,34 @@ export default function Contest() {
     }
   }
 
+  // 投票する
+  const vote = async post => {
+    loadingRef.current.startLoading()
+    try {
+      await axios.post(`/api/v1/vote/${post.id}`)
+      post.isVoted = true
+      setPosts([...posts])
+    } catch (e) {
+      console.log(e)
+    } finally {
+      loadingRef.current.stopLoading()
+    }
+  }
+
+  // 投票をキャンセルする
+  const cancelVote = async post => {
+    loadingRef.current.startLoading()
+    try {
+      await axios.post(`/api/v1/vote/${post.id}/cancel`)
+      post.isVoted = false
+      setPosts([...posts])
+    } catch (e) {
+      console.log(e)
+    } finally {
+      loadingRef.current.stopLoading()
+    }
+  }
+
   // コンテスト状態スタイル決定
   const contestStateStyle = status => {
     if (status === 'post_accepting') {
@@ -230,6 +258,23 @@ export default function Contest() {
                   <div className={styles.imageWrap}>
                     <img src={post.path.url} />
                   </div>
+                  {event.eventStatusName == 'voting_period' ? (
+                    <div className={styles.voteArea}>
+                      {post.isVoted ? (
+                        <div className={styles.votedLabel} onClick={() => cancelVote(post)}>
+                          <img src="/images/voted.png" width="26" />
+                          <label>投票済み</label>
+                        </div>
+                      ) : (
+                        <div className = {styles.notVoteLabel} onClick={() => vote(post)}>
+                          <img className={styles.notHover} src="/images/not_vote.png" width="26" />
+                          <img className={styles.hover} src="/images/not_vote_hover.png" width="26" />
+                          <label>投票する</label>
+                        </div>
+                      )}
+                      
+                    </div>
+                  ) : null}
                   <div className={styles.description}>
                     <PreBox>{post.description}</PreBox>
                   </div>
@@ -264,11 +309,13 @@ export default function Contest() {
           </div>
         </div>
       </div>
-      <div className={styles.buttonArea}>
-        <CVButton width={60} height={60} fontSize={30} onClick={openPostModal}>
-          ＋
-        </CVButton>
-      </div>
+      {event.eventStatusName == 'post_accepting' ? (
+        <div className={styles.buttonArea}>
+          <CVButton width={60} height={60} fontSize={30} onClick={openPostModal}>
+            ＋
+          </CVButton>
+        </div>
+      ): null}
       <Loading ref={loadingRef} />
       <Modal ref={postModal} needCloseButton={true} top={modalTop}>
         {postErrorMessages.length > 0 ? (

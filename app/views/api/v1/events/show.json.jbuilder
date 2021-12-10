@@ -11,11 +11,7 @@ json.posts do
         json.comment comment.comment
       end
     end
-    json.votes do
-      json.array!(post.votes) do |vote|
-        json.voteUserId vote.user_id
-      end
-    end
+    json.isVoted post.vote?(@current_user)
   end
 end
 json.event do

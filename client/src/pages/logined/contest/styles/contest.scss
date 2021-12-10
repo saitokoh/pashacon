@@ -96,6 +96,61 @@
         }
       }
 
+      .voteArea {
+        width: 100%;
+        padding: 4px 10px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #b9b9b9;
+
+        .notVoteLabel {
+          display: flex;
+          align-items: center;
+          max-width: 100px;
+          cursor: pointer;
+
+          label {
+            margin-left: 5px;
+            font-size: 16px;
+            cursor: pointer;
+          }
+
+          .hover {
+            display: none;
+          }
+
+          &:hover {
+            label {
+              color: rgb(223, 86, 86);
+            }
+            .hover {
+              display: block;
+            }
+            .notHover {
+              display: none;
+            }
+          }
+        }
+
+        .votedLabel {
+          display: flex;
+          align-items: center;
+          max-width: 100px;
+          cursor: pointer;
+
+          label {
+            margin-left: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            color: rgb(223, 86, 86);
+          }
+
+          &:hover {
+            opacity: .8;
+          }
+
+        }
+      }
+
       .description {
         width: 100%;
 

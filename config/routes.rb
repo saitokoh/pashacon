@@ -14,9 +14,13 @@ Rails.application.routes.draw do
       get 'event/ownerEvents' => 'events#get_owner_events'
       post 'event/register' => 'events#register'
       get 'event/:event_id' => 'events#show'
+      get 'event/ownerEvent/:event_id' => 'events#show_owner_event'
+      post 'event/:event_id/update' => 'events#update'
       post 'event/:event_id/post' => 'posts#post'
       get 'post/:post_id/comments' => 'comments#get_asc'
       post 'post/:post_id/comment/register' => 'comments#register'
+      post 'vote/:post_id' => 'votes#vote'
+      post 'vote/:post_id/cancel' => 'votes#cancel_vote'
 
       namespace :prelogin do
         get 'event/:token' => 'events#get_for_invite'

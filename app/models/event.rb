@@ -4,6 +4,8 @@ class Event < ApplicationRecord
 
   belongs_to :owner_user, class_name: "User"
   has_many :posts
+  has_many :user_events
+
 
   scope :post_accepting, -> {where(event_status_id: EventStatus::POST_ACCEPTING.id)}
 
