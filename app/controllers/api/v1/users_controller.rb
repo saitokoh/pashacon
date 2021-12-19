@@ -10,7 +10,6 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   end
 
   def update_password
-    byebug
     @current_user.password = update_password_params[:password]
     # @current_user.password_confirmation = @current_user.password
     if @current_user.save
