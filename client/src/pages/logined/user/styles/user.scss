@@ -1,0 +1,310 @@
+@import 'pages/common/styles/common.scss';
+
+.main {
+  min-height: calc(100% - 100px);
+  background-color: #f3f3f3;
+  padding: 53px 20px;
+  box-sizing: border-box;
+  color: #333;
+  
+  @include sp {
+    padding: 30px 10px;
+  }
+}
+
+.inner {
+  max-width: 1096px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  .titleBox {
+    border-bottom: 1px solid #455250;
+    margin-bottom: 20px;
+    padding: 5px 15px;
+
+    h1 {
+      font-size: 24px;
+  
+      @include sp {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .container {
+    margin: 30px auto;
+    max-width: 900px;
+    width: 100%;
+    padding: 50px 40px;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    @include sp {
+      padding: 30px 10px;
+    }
+
+    .titleArea {
+      margin: 20px auto;
+      padding: 0 0 5px 5px;
+      border-bottom: 1px solid #455250;
+
+      h2 {
+        font-size: 20px;
+      }
+    }
+
+    .inputAreaWrap {
+      width: 600px;
+      margin: 30px auto;
+
+      @include sp {
+        width: 100%;
+      }
+
+      .inputArea {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 10px 0;
+        position: relative;
+
+        .joinNum {
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        label {
+          margin-bottom: 5px;
+          font-size: 14px;
+
+          small {
+            font-size: 12px;
+          }
+        }
+
+        input, textarea, pre {
+          width: 100%;
+          padding: 5px 5px;
+          font-size: 17px;
+          border: 1px solid #c3c3c3;
+          border-radius: 3px;
+          box-sizing: border-box;
+
+          &:focus {
+            color: #222;
+            border: 1px #14b4b4 solid;
+            outline: medium none;
+          }
+        }
+        
+
+        .passwordEye {
+          position: absolute;
+          right: 14px;
+          top: 30px;
+          cursor: pointer;
+        }
+
+        .passwordEyeSlash {
+          position: absolute;
+          right: 14px;
+          top: 25px;
+          cursor: pointer;
+        }
+
+        .radioField {
+          margin-top: 5px;
+          display: flex;
+
+          .contestStatusWrap {
+            margin: 5px;
+          }
+
+          label {
+            padding: 6px 8px;
+            border-radius: 3px;
+            border: 1px solid #6c757d;
+            background-color: #fff;
+            color: #6c757d;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+          }
+
+          input[type=radio] {
+            display: none;
+          }
+
+          input[type=radio]:checked + label.posting {
+            border: none;
+            background-color: #0d6efd;
+            color: #fff;
+          }
+
+          input[type=radio]:checked + label.voting {
+            border: none;
+            background-color: #198754;
+            color: #fff;
+          }
+
+          input[type=radio]:checked + label.end {
+            border: none;
+            background-color: #6c757d;
+            color: #fff;
+          }
+        }
+
+        textarea {
+          min-height: 150px;
+        }
+
+        pre {
+          min-height: 100px;
+          max-height: 150px;
+          overflow-y: scroll;
+        }
+
+        .contestTitle {
+          font-size: 15px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .buttonArea {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+
+  .contestTable {
+    margin: 10px auto;
+    max-width: 900px;
+    width: 100%;
+    color: #4a4a4a;
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+    border-color: grey;
+
+    thead tr th {
+      font-size: 14px;
+      font-weight: bold;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 15px;
+      text-align: left;
+      vertical-align: middle;
+
+      @include sp {
+        font-size: 13px;
+      }
+    }
+
+    tbody tr {
+
+      td {
+        padding: 15px;
+        background-color: #fff;
+        border-top: 1px solid #dbdbdb;
+        border-bottom: 1px solid #dbdbdb;
+        vertical-align: middle;
+
+        .descriptionWrap {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .tdMiddle {
+          margin: 15px 10px 5px;
+        }
+
+        .tdBottom {
+          margin: 0 10px;
+        }
+      }
+
+      td:first-child {
+        border-radius: 4px 0 0 4px;
+        border-left: 1px solid #dbdbdb;
+      }
+
+      td:last-child {
+        border-radius: 0 4px 4px 0;
+        border-right: 1px solid #dbdbdb;
+      }
+
+      .contestTitle {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .description {
+        font-size: 14px;
+      }
+    } 
+  }
+}
+
+// Sp用
+.spWrap {
+  margin-top: 20px;
+}
+
+.listSp {
+  margin: 15px auto;
+  padding: 15px;
+  max-width: 450px;
+  width: calc(100% - 30px);
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  vertical-align: middle;
+
+  .listSpTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .listSpTitle {
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 25px;
+  }
+
+  .listSpBottom {
+    display: flex;
+    justify-content: flex-end;
+    
+    span {
+      margin-left: 10px;
+    }
+  }
+  
+  .description {
+    font-size: 14px;
+  }
+}
+
+
+.link {
+  color: #3296d2;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.completeModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}

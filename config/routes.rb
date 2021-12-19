@@ -9,7 +9,8 @@ Rails.application.routes.draw do
         token_validations:  'api/v1/auth/token_validations'
       }
 
-      get 'home' => 'main#info'
+      post 'user/update' => 'users#update'
+      post 'user/updatePassword' => 'users#update_password'
       get 'events' => 'events#get_joined_events'
       get 'event/ownerEvents' => 'events#get_owner_events'
       post 'event/register' => 'events#register'

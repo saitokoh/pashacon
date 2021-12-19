@@ -4,6 +4,7 @@ const config = {
   authUrl: '/api/v1/auth',
   userAttributes: {
     id: 'id',
+    email: 'email',
     name: 'name',
     userTypeId: 'user_type_id',
   },

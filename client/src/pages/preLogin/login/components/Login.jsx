@@ -135,9 +135,9 @@ function Login({ signInUser }) {
                 <span className={styles.arrow}>ログイン</span>
               </Button>
             </p>
-            <p className={styles.forgotPassword}>
+            {/* <p className={styles.forgotPassword}>
               <Link className={styles.arrow} to={'/pre/passwordReset/mail'}>パスワードを忘れた方はこちら</Link>
-            </p>
+            </p> */}
           </div>
         </form>
       </div>

@@ -12,8 +12,7 @@ import ContestList from 'pages/logined/contestList/components/ContestList';
 import OwnerContestList from 'pages/logined/ownerContestList/components/OwnerContestList';
 import Contest from 'pages/logined/contest/components/Contest';
 import OwnerContest from 'pages/logined/ownerContest/components/OwnerContest';
-import Profile from 'pages/logined/profile/components/Profile';
-import PasswordEdit from 'pages/logined/password/components/PasswordEdit';
+import User from 'pages/logined/user/components/User';
 
 export const preloginRoutes = [
   {
@@ -104,15 +103,9 @@ export const loginedRoutes = [
     component: Contest
   },
   {
-    name: 'profile',
-    path: '/profile',
+    name: 'user',
+    path: '/user',
     exact: true,
-    component: Profile
-  },
-  {
-    name: 'passwordEdit',
-    path: '/profile/password/edit',
-    exact: true,
-    component: PasswordEdit
+    component: User
   },
 ]

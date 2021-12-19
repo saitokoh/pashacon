@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { useParams} from 'react-router-dom'
 import { useSelector } from "react-redux"
 import { axios } from "redux-token-auth"
@@ -170,11 +170,14 @@ export default function Contest() {
 
   // 投票する
   const vote = async post => {
+    // 投票数0の場合は投票出来ない
+    if (remainingVoteNum == 0) {
+      return
+    }
     loadingRef.current.startLoading()
     try {
       await axios.post(`/api/v1/vote/${post.id}`)
-      post.isVoted = true
-      setPosts([...posts])
+      await fetchPost()
     } catch (e) {
       console.log(e)
     } finally {
@@ -187,8 +190,7 @@ export default function Contest() {
     loadingRef.current.startLoading()
     try {
       await axios.post(`/api/v1/vote/${post.id}/cancel`)
-      post.isVoted = false
-      setPosts([...posts])
+      await fetchPost()
     } catch (e) {
       console.log(e)
     } finally {
@@ -238,6 +240,14 @@ export default function Contest() {
     
   }, [windowDimensions])
 
+  // memos
+  // 残り投票数
+  const remainingVoteNum = useMemo(() => {
+    const myPosts = posts.filter(post => post.userId == user.id)
+    const myVotes = posts.filter(post => post.isVoted)
+    return myPosts.length - myVotes.length
+  }, [posts])
+
   return (
     <>
       <div className={styles.main}>
@@ -256,7 +266,7 @@ export default function Contest() {
                     <span>投稿者：{post.userName}</span>
                   </div>
                   <div className={styles.imageWrap}>
-                    <img src={post.path.url} />
+                    <img src={post.path.url} loading="lazy" />
                   </div>
                   {event.eventStatusName == 'voting_period' ? (
                     <div className={styles.voteArea}>
@@ -265,11 +275,16 @@ export default function Contest() {
                           <img src="/images/voted.png" width="26" />
                           <label>投票済み</label>
                         </div>
-                      ) : (
-                        <div className = {styles.notVoteLabel} onClick={() => vote(post)}>
+                      ) : remainingVoteNum > 0 ? (
+                        <div className={styles.notVoteLabel} onClick={() => vote(post)}>
                           <img className={styles.notHover} src="/images/not_vote.png" width="26" />
                           <img className={styles.hover} src="/images/not_vote_hover.png" width="26" />
                           <label>投票する</label>
+                        </div>
+                      ) : (
+                        <div className={[styles.notVoteLabel, styles.disable].join(" ")} onClick={() => vote(post)}>
+                          <img className={styles.notHover} src="/images/not_vote.png" width="26" />
+                          <label>投票できません</label>
                         </div>
                       )}
                       
@@ -315,7 +330,11 @@ export default function Contest() {
             ＋
           </CVButton>
         </div>
-      ): null}
+      ) : event.eventStatusName == 'voting_period' ? (
+        <div className={styles.voteStatusArea}>
+          残り投票可能数：{remainingVoteNum}票
+        </div>
+      ) : null}
       <Loading ref={loadingRef} />
       <Modal ref={postModal} needCloseButton={true} top={modalTop}>
         {postErrorMessages.length > 0 ? (

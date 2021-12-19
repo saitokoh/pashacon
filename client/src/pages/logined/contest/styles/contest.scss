@@ -105,7 +105,7 @@
         .notVoteLabel {
           display: flex;
           align-items: center;
-          max-width: 100px;
+          max-width: 200px;
           cursor: pointer;
 
           label {
@@ -127,6 +127,24 @@
             }
             .notHover {
               display: none;
+            }
+          }
+
+          &.disable {
+            opacity: .7;
+            cursor: default;
+
+            &:hover {
+              label {
+                color: #333;
+                cursor: default;
+              }
+              .hover {
+                display: none;
+              }
+              .notHover {
+                display: block;
+              }
             }
           }
         }
@@ -256,6 +274,23 @@
     right: 20px;
   }
 }
+
+.voteStatusArea {
+  position: fixed;
+  bottom: 70px;
+  right: 70px;
+  background: #fff;
+  padding: 15px;
+  font-size: 16px;
+  border: 1px solid #8e8e8e;
+  border-radius: 3px;
+  
+  @include sp {
+    bottom: 30px;
+    right: 20px;
+  }
+}
+
 
 .imageAreaWrap {
   display: flex;

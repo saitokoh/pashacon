@@ -218,8 +218,8 @@ export default function OwnerContestList() {
                 {newContestNameError ? <div className={commonStyles.error}>{newContestNameError}</div> : ""}
               </div>
               <div className={styles.inputArea}>
-                <label>コンテストの説明<small>（300文字まで）</small></label>
-                <textarea maxLength="300" value={newContestDescription} onChange={e => setNewContestDescription(e.target.value)}></textarea>
+                <label>コンテストの招待メッセージ<small>（1000文字まで）</small></label>
+                <textarea maxLength="1000" value={newContestDescription} onChange={e => setNewContestDescription(e.target.value)}></textarea>
                 {newContestDescriptionError ? <div className={commonStyles.error}>{newContestDescriptionError}</div> : ""}
               </div>
             </div>
